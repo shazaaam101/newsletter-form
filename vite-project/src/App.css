@@ -1,0 +1,215 @@
+:root {
+  --fs-p: 1rem;
+  --primary-tomato: hsl(4, 100%, 67%);
+  --neutral-dark-grey: hsl(234, 29%, 20%);
+  --neutral-charcoal-grey: hsl(235, 18%, 26%);
+  --neutral-grey: hsl(231, 7%, 60%);
+  --neutral-white: hsl(0, 0%, 100%);
+  --border-radius-input : 10px;
+  --primary-fw: 700;
+  --secondary-fw: 400;
+}
+
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.App {
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background-color: var(--neutral-charcoal-grey);
+}
+
+.FirstPage {
+  width: min(90%, 50rem);
+  border-radius: 2rem;
+  background-color: var(--neutral-white);
+  height: 30rem;
+}
+
+.FirstPage .flex {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  --padding : 1rem;
+  padding: var(--padding);
+  gap: .5rem;
+}
+
+.FirstPage .left-panel {
+  padding-left: 3rem;
+  flex: 1;
+}
+
+.FirstPage .left-panel > * {
+  margin-top: 1em;
+}
+
+.FirstPage .left-panel .title {
+  font-size: 3rem;
+}
+
+.FirstPage .left-panel > p {
+  font-size: var(--fs-p);
+}
+
+.FirstPage .lists {
+  list-style-position: outside;
+  margin-left: 1em;
+}
+
+.FirstPage .lists > li {
+
+  padding-inline-start: 1ch;
+  text-indent: 0ch;
+  
+}
+
+.FirstPage .lists > li::marker {
+  
+  font-size: 1.5rem;
+  content: url("./assets/images/icon-list.svg");
+}
+
+.EmailForm > * {
+  margin-top: 1em;
+}
+
+.EmailForm .input-field {
+  position: relative;
+}
+
+.EmailForm .input-field label {
+  font-weight: var(--primary-fw);
+}
+
+.EmailForm .input-field input {
+  margin-top: 1em;
+  padding: 1em;
+  border-radius: var(--border-radius-input);
+  border: 1px solid var(--neutral-grey);
+  width: 100%;
+}
+
+.EmailForm .input-field:has(.error) input {
+  border: 1px solid var(--primary-tomato);
+  background-color: rgba(200, 0, 0, 0.1);
+}
+
+.EmailForm .input-field:has(.error) input::placeholder {
+  color: var(--primary-tomato);
+}
+
+.EmailForm .error {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--primary-tomato);
+}
+
+.btn {
+  width: 100%;
+  cursor: pointer;
+  padding-block: 1em;
+  background-color: var(--neutral-dark-grey);
+  color: var(--neutral-white);
+  border-radius: var(--border-radius-input);
+  border: none;
+  outline: transparent;
+  transition: 0.125s ease-in-out;
+}
+
+.btn:is(:hover, :focus-visible) {
+  background-color: var(--primary-tomato);
+  box-shadow: 3px 3px 10px var(--primary-tomato);
+} 
+
+
+
+.FirstPage .right-panel {
+  flex: 1;
+}
+
+.FirstPage .right-panel img {
+  margin-left: auto;
+  height: calc(30rem - (var(--padding)*2) );
+}
+
+.LastPage {
+  width: min(90%, 30rem);
+  border-radius: 2rem;
+  background-color: var(--neutral-white);
+  height: 28rem;
+  padding: 2rem 3rem;
+}
+
+.LastPage .title {
+  font-size: 3rem;
+}
+
+.LastPage > *:not(:first-child) {
+  margin-top: 1.5rem;
+}
+
+
+@media screen and (max-width:700px) {
+  .FirstPage {
+    width: 100%;
+    border-radius: 0;
+    background-color: var(--neutral-white);
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .FirstPage .flex {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  .FirstPage .left-panel {
+    padding: 2rem;
+  }
+
+  .FirstPage .right-panel img{
+    height: auto;
+  }
+
+
+  
+} 
+
+@media screen and (max-width:375px) {
+  .App {
+    background-color: var(--neutral-white);
+  }
+
+  .LastPage {
+    padding: 0 1rem;
+    border-radius: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    position: relative;
+  }
+
+  .LastPage img {
+    margin-top: clamp(8rem, 1rem + 10vh, 10rem);
+  }
+
+  .LastPage .btn {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+  }
+}
